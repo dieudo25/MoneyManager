@@ -5,9 +5,11 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TransactionService", "TransactionService", "{C294E2B1-6069-4D0A-BAA9-A5876A80C5B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionService.Domain", "TransactionService\TransactionService.Domain\TransactionService.Domain.csproj", "{822771BA-F90C-4577-9740-E4829CBFA57E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionService.Domain", "TransactionService\TransactionService.Domain\TransactionService.Domain.csproj", "{822771BA-F90C-4577-9740-E4829CBFA57E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionService.Data", "TransactionService\TransactionService.Data\TransactionService.Data.csproj", "{AD6F9657-23DB-41CF-A5D1-837C168F1ABD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionService.Data", "TransactionService\TransactionService.Data\TransactionService.Data.csproj", "{AD6F9657-23DB-41CF-A5D1-837C168F1ABD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionService.API", "TransactionService\TransactionService.API\TransactionService.API.csproj", "{C71041D9-7F39-4E4F-B9DB-D3A8590EEE99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{AD6F9657-23DB-41CF-A5D1-837C168F1ABD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD6F9657-23DB-41CF-A5D1-837C168F1ABD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD6F9657-23DB-41CF-A5D1-837C168F1ABD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C71041D9-7F39-4E4F-B9DB-D3A8590EEE99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C71041D9-7F39-4E4F-B9DB-D3A8590EEE99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C71041D9-7F39-4E4F-B9DB-D3A8590EEE99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C71041D9-7F39-4E4F-B9DB-D3A8590EEE99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,6 +36,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{822771BA-F90C-4577-9740-E4829CBFA57E} = {C294E2B1-6069-4D0A-BAA9-A5876A80C5B8}
 		{AD6F9657-23DB-41CF-A5D1-837C168F1ABD} = {C294E2B1-6069-4D0A-BAA9-A5876A80C5B8}
+		{C71041D9-7F39-4E4F-B9DB-D3A8590EEE99} = {C294E2B1-6069-4D0A-BAA9-A5876A80C5B8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1B7295D3-DFE2-40E8-B559-42DDECD40711}

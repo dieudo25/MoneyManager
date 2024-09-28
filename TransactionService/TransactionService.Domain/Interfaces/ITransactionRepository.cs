@@ -13,5 +13,6 @@ namespace TransactionService.Domain.Interfaces
         Task<Transaction> GetTransactionByIdAsync(int id);
         Task AddTransactionAsync(Transaction transaction);
         Task DeleteTransactionAsync(int id);
+        Task UpdateTransactionAsync(Transaction transaction);
     }
 }

@@ -16,14 +16,7 @@ namespace TransactionService.Data.Repositories
 
         public TransactionRepository(TransactionDbContext dbContext)
         {
-            if (_dbContext != null)
-            {
-                _dbContext = dbContext;
-            }
-            else
-            {
-                throw new NullReferenceException("Transaction Db Context is null");
-            }
+            _dbContext = dbContext;
         }
 
         public async Task AddTransactionAsync(Transaction transaction)
@@ -49,12 +42,26 @@ namespace TransactionService.Data.Repositories
 
         public async Task<IEnumerable<Transaction>> GetAllTransactionsAsync()
         {
-                return await _dbContext.Transactions.ToListAsync();
+            return await _dbContext.Transactions.ToListAsync();
         }
 
         public async Task<Transaction> GetTransactionByIdAsync(int id)
         {
-                return await _dbContext.Transactions.FindAsync(id);
+            return await _dbContext.Transactions.FindAsync(id);
+        }
+
+        public Task UpdateTransactionAsync(Transaction transaction)
+        {
+            var existingTransaction = _dbContext.Transactions.FirstOrDefault(t => t.Id == transaction.Id);
+
+            if (existingTransaction != null)
+            {
+                existingTransaction.Description = transaction.Description;
+                existingTransaction.Amount = transaction.Amount;
+                existingTransaction.Date = transaction.Date;
+            }
+
+            return Task.CompletedTask;
         }
     }
 }
