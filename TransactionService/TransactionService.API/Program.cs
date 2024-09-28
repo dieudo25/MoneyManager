@@ -1,16 +1,26 @@
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using TransactionService.Data.Data;
 using TransactionService.Data.Repositories;
 using TransactionService.Domain.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Set up Serilog
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration) 
+    .Enrich.FromLogContext()                         
+    .CreateLogger();
+
+builder.Host.UseSerilog();
+
 // Add services to the container
-// Add DBContext
+
+//// Add DBContext
 builder.Services.AddDbContext<TransactionDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Add Repository
+//// Add Repository
 builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 
 builder.Services.AddControllers();
@@ -33,4 +43,17 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+try
+{
+    Log.Information("Starting up services");
+    app.Run();
+}
+catch (Exception e)
+{
+    Log.Fatal(e, "Application start-up failed");
+    throw;
+}
+finally
+{
+    Log.CloseAndFlush();
+}
