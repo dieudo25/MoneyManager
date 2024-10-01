@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Converters;
 using Serilog;
 using TransactionService.Data.Data;
 using TransactionService.Data.Repositories;
@@ -23,7 +24,12 @@ builder.Services.AddDbContext<TransactionDbContext>(options =>
 //// Add Repository
 builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddNewtonsoftJson(options =>
+    {
+        options.SerializerSettings.Converters.Add(new StringEnumConverter());
+    });
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

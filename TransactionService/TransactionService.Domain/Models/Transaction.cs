@@ -12,12 +12,16 @@ namespace TransactionService.Domain.Models
     {
         public int Id { get; set; }
 
+
         public string? Description { get; set; }
 
         [Column(TypeName = "decimal(18,4)")]
         public decimal Amount { get; set; }
 
         public DateTime Date { get; set; }
+
+        public TransactionTypeEnum TransactionType { get; set; }
+
 
         public override string ToString()
         {
