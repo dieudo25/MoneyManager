@@ -2,6 +2,7 @@
 using TransactionService.Data.Repositories;
 using TransactionService.Domain.Interfaces;
 using TransactionService.Domain.Models;
+using UserService.Domain.Models;
 
 namespace TransactionService.API.Controllers
 {
@@ -22,39 +23,60 @@ namespace TransactionService.API.Controllers
         public async Task<ActionResult<IEnumerable<Transaction>>> GetTransactions()
         {
             _logger.LogDebug("Fetch All transactions");
+           
             var transactions = await _transactionRepository.GetAllTransactionsAsync();
+            
             _logger.LogDebug($"Number of transactions: {transactions.Count()}");
 
             return Ok(transactions);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Transaction>> GetTransactionById(Guid transactionId)
+        {
+            var transaction = await _transactionRepository.GetTransactionByIdAsync(transactionId);
+            
+            if (transaction == null)
+            {
+                return NotFound();
+            }
+            
+            return Ok(transaction);
         }
 
         [HttpPost]
         public async Task<ActionResult> AddTransaction(Transaction transaction)
         {
             _logger.LogDebug("Transaction received: {@Transaction}", transaction);
+            
             await _transactionRepository.AddTransactionAsync(transaction);
+            
             return Ok();
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateTransaction(int id, Transaction transaction)
+        public async Task<ActionResult> UpdateTransaction(Guid transactionId, Transaction transaction)
         {
-            _logger.LogDebug("Update transaction {id}: {@Transaction}", id, transaction);
-            if (transaction == null)
+            _logger.LogDebug("Update transaction {id}: {@Transaction}", transactionId, transaction);
+            
+            if (transaction == null || transactionId != transaction.Id)
             {
                 _logger.LogError($"Transaction to update is null");
                 return BadRequest();
             }
 
             await _transactionRepository.UpdateTransactionAsync(transaction);
+           
             return Ok(transaction);
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteTransaction(int id)
+        public async Task<ActionResult> DeleteTransaction(Guid transactionId)
         {
-            _logger.LogDebug($"Delete transaction {id}");
-            await _transactionRepository.DeleteTransactionAsync(id);
+            _logger.LogDebug($"Delete transaction {transactionId}");
+            
+            await _transactionRepository.DeleteTransactionAsync(transactionId);
+            
             return NoContent();
         }
     }

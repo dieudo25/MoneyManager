@@ -1,30 +1,44 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Converters;
 using Serilog;
-using TransactionService.Data.Context;
-using TransactionService.Data.Repositories;
-using TransactionService.Domain.Interfaces;
+using UserService.Data.Context;
+using UserService.Data.Repositories;
+using UserService.Domain.Interfaces;
 using UserService.Domain.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Set up Serilog
 Log.Logger = new LoggerConfiguration()
-    .ReadFrom.Configuration(builder.Configuration) 
-    .Enrich.FromLogContext()                         
+    .ReadFrom.Configuration(builder.Configuration)
+    .Enrich.FromLogContext()
     .CreateLogger();
 
 builder.Host.UseSerilog();
 
-// Add services to the container
+// Add services to the container.
 
 //// Add DBContext
-builder.Services.AddDbContext<TransactionDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<UserDbContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddIdentity<User, IdentityRole<Guid>>(options =>
+{
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequiredLength = 6;
+    options.Password.RequireNonAlphanumeric = true;
+
+    options.User.RequireUniqueEmail = true;
+})
+    .AddEntityFrameworkStores<UserDbContext>()
+    .AddDefaultTokenProviders();
 
 //// Add Repository
-builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 builder.Services.AddControllers()
     .AddNewtonsoftJson(options =>
@@ -53,12 +67,12 @@ app.MapControllers();
 
 try
 {
-    Log.Information("Starting up transaction service");
+    Log.Information("Starting up user service");
     app.Run();
 }
 catch (Exception e)
 {
-    Log.Fatal(e, "Transaction service run has failed");
+    Log.Fatal(e, "User service run has failed");
     throw;
 }
 finally

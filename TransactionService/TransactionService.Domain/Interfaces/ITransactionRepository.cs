@@ -10,9 +10,9 @@ namespace TransactionService.Domain.Interfaces
     public interface ITransactionRepository
     {
         Task<IEnumerable<Transaction>> GetAllTransactionsAsync();
-        Task<Transaction> GetTransactionByIdAsync(int id);
+        Task<Transaction> GetTransactionByIdAsync(Guid transactionId);
         Task AddTransactionAsync(Transaction transaction);
-        Task DeleteTransactionAsync(int id);
+        Task DeleteTransactionAsync(Guid transactionId);
         Task UpdateTransactionAsync(Transaction transaction);
     }
 }

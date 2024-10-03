@@ -21,9 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\UserService.Domain\UserService.Domain.csproj" />
-    <ProjectReference Include="..\TransactionService.Data\TransactionService.Data.csproj" />
-    <ProjectReference Include="..\TransactionService.Domain\TransactionService.Domain.csproj" />
+    <ProjectReference Include="..\UserService.Data\UserService.Data.csproj" />
   </ItemGroup>
 
 </Project>
