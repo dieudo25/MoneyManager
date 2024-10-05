@@ -2,7 +2,6 @@
 using TransactionService.Data.Repositories;
 using TransactionService.Domain.Interfaces;
 using TransactionService.Domain.Models;
-using UserService.Domain.Models;
 
 namespace TransactionService.API.Controllers
 {

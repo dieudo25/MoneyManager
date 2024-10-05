@@ -13,11 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionService.API", "T
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserService", "UserService", "{5A18C13F-ED08-4100-B654-5750ED439D00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.Domain", "UserService.Domain\UserService.Domain.csproj", "{29EB1341-025F-476A-81B2-E890011A2E4F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.Domain", "UserService\UserService.Domain\UserService.Domain.csproj", "{29EB1341-025F-476A-81B2-E890011A2E4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.Data", "UserService.Data\UserService.Data.csproj", "{D4A31BEB-95F6-419F-AA7C-C9EEF86C30AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.Data", "UserService\UserService.Data\UserService.Data.csproj", "{D4A31BEB-95F6-419F-AA7C-C9EEF86C30AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.API", "UserService.API\UserService.API.csproj", "{2085DA04-B5DA-4506-A28C-49AC789AD8F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.API", "UserService\UserService.API\UserService.API.csproj", "{2085DA04-B5DA-4506-A28C-49AC789AD8F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

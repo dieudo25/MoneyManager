@@ -5,7 +5,6 @@ using Serilog;
 using TransactionService.Data.Context;
 using TransactionService.Data.Repositories;
 using TransactionService.Domain.Interfaces;
-using UserService.Domain.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -24,7 +24,6 @@ namespace TransactionService.Domain.Models
 
         public override string ToString()
         {
-            // Serialize the current object to JSON
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
     }
