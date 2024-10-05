@@ -38,7 +38,7 @@ namespace UserService.API.Controllers
             return Ok(users);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{userId}")]
         public async Task<ActionResult<User>> GetUserById(Guid userId)
         {
             _logger.LogDebug($"Fetch user {{{userId}}}");
@@ -71,7 +71,7 @@ namespace UserService.API.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> CreateUser([FromBody] UserDto createUserDto)
         {
-            _logger.LogDebug("User received: {@User}", createUserDto);
+            _logger.LogDebug("Request to create user");
 
             if (createUserDto == null || string.IsNullOrWhiteSpace(createUserDto.Password))
             {
@@ -85,14 +85,14 @@ namespace UserService.API.Controllers
             if (result.Succeeded)
             {
                 var createdUserDto = MappingHelper.ToUserDto(user);
-                return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
+                return CreatedAtAction(nameof(GetUserById), new { userId = user.Id }, user);
             }
             
             _logger.LogError("Failed to create user: {Errors}", result.Errors);
             return BadRequest(result.Errors);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{userId}")]
         public async Task<IActionResult> UpdateUser(Guid userId, [FromBody] User user)
         {
             _logger.LogDebug("Update user {id}: {@User}", userId, user);
@@ -108,7 +108,7 @@ namespace UserService.API.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{userId}")]
         public async Task<IActionResult> DeleteUser(Guid userId)
         {
             _logger.LogDebug($"Delete user {userId}");

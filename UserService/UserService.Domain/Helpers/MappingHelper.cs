@@ -9,11 +9,12 @@ namespace UserService.Domain.Helpers
         {
             if (user == null)
             {
-                return null;
+                throw new NullReferenceException("User object is null, mapping to DTO object failed.");
             }
 
             return new UserDto
             {
+                Id = user.Id,
                 UserName = user.UserName,
                 Email = user.Email,
                 FirstName = user.FirstName,
