@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TransactionService.Data.Repositories;
+using TransactionService.Database.Repositories;
 using TransactionService.Domain.Interfaces;
 using TransactionService.Domain.Models;
 
@@ -31,9 +31,9 @@ namespace TransactionService.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Transaction>> GetTransactionById(Guid transactionId)
+        public async Task<ActionResult<Transaction>> GetTransactionById(Guid Id)
         {
-            var transaction = await _transactionRepository.GetTransactionByIdAsync(transactionId);
+            var transaction = await _transactionRepository.GetTransactionByIdAsync(Id);
             
             if (transaction == null)
             {
@@ -54,11 +54,11 @@ namespace TransactionService.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateTransaction(Guid transactionId, Transaction transaction)
+        public async Task<ActionResult> UpdateTransaction(Transaction transaction)
         {
-            _logger.LogDebug("Update transaction {id}: {@Transaction}", transactionId, transaction);
+            _logger.LogDebug("Update transaction: {@Transaction}", transaction);
             
-            if (transaction == null || transactionId != transaction.Id)
+            if (transaction == null)
             {
                 _logger.LogError($"Transaction to update is null");
                 return BadRequest();

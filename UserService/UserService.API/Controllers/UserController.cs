@@ -93,11 +93,11 @@ namespace UserService.API.Controllers
         }
 
         [HttpPut("{userId}")]
-        public async Task<IActionResult> UpdateUser(Guid userId, [FromBody] User user)
+        public async Task<IActionResult> UpdateUser([FromBody] User user)
         {
-            _logger.LogDebug("Update user {id}: {@User}", userId, user);
+            _logger.LogDebug("Update user: {@User}", user);
 
-            if (user == null || userId != user.Id)
+            if (user == null)
             {
                 _logger.LogError($"User to update is null");
                 return BadRequest("User object is null or ID mismatch.");

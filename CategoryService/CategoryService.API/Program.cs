@@ -1,12 +1,9 @@
-using Microsoft.AspNetCore.Identity;
+using CategoryService.Database.Context;
+using CategoryService.Database.Repositories;
+using CategoryService.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Converters;
 using Serilog;
-using UserService.Database.Context;
-using UserService.Database.Repositories;
-using UserService.Domain.Interfaces;
-using UserService.Domain.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,24 +18,11 @@ builder.Host.UseSerilog();
 // Add services to the container.
 
 //// Add DBContext
-builder.Services.AddDbContext<UserDbContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-builder.Services.AddIdentity<User, IdentityRole<Guid>>(options =>
-{
-    options.Password.RequireDigit = true;
-    options.Password.RequireLowercase = true;
-    options.Password.RequireUppercase = true;
-    options.Password.RequiredLength = 6;
-    options.Password.RequireNonAlphanumeric = true;
-
-    options.User.RequireUniqueEmail = true;
-})
-    .AddEntityFrameworkStores<UserDbContext>()
-    .AddDefaultTokenProviders();
+builder.Services.AddDbContext<CategoryDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 //// Add Repository
-builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 builder.Services.AddControllers()
     .AddNewtonsoftJson(options =>
@@ -67,12 +51,12 @@ app.MapControllers();
 
 try
 {
-    Log.Information("Starting up user service");
+    Log.Information("Starting up category service");
     app.Run();
 }
 catch (Exception e)
 {
-    Log.Fatal(e, "User service run has failed");
+    Log.Fatal(e, "Category service run has failed");
     throw;
 }
 finally
