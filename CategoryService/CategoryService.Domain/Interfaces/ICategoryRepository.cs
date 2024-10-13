@@ -9,7 +9,7 @@ namespace CategoryService.Domain.Interfaces
 {
     public interface ICategoryRepository
     {
-        Task<IEnumerable<Category>> GetAllCategoriessAsync();
+        Task<IEnumerable<Category>> GetAllCategoriesAsync();
         Task<Category> GetCategoryByIdAsync(Guid categoryId);
         Task AddCategoryAsync(Category category);
         Task DeleteCategoryAsync(Guid categoryId);
