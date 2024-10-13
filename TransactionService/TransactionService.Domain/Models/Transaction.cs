@@ -13,6 +13,8 @@ namespace TransactionService.Domain.Models
     {
         public Guid Id { get; set; }
 
+        public Guid AccountId { get; set; }
+
         public string? Description { get; set; }
 
         [Column(TypeName = "decimal(18,4)")]
