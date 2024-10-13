@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TransactionService.Domain.Models
+namespace Common.Domain.Enums
 {
     public enum TransactionTypeEnum
     {
