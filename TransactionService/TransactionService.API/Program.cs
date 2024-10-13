@@ -1,7 +1,8 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Converters;
 using Serilog;
-using TransactionService.Data.Data;
+using TransactionService.Data.Context;
 using TransactionService.Data.Repositories;
 using TransactionService.Domain.Interfaces;
 
@@ -51,12 +52,12 @@ app.MapControllers();
 
 try
 {
-    Log.Information("Starting up services");
+    Log.Information("Starting up transaction service");
     app.Run();
 }
 catch (Exception e)
 {
-    Log.Fatal(e, "Application start-up failed");
+    Log.Fatal(e, "Transaction service run has failed");
     throw;
 }
 finally

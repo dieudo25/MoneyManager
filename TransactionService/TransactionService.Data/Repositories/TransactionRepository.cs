@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TransactionService.Data.Data;
+using TransactionService.Data.Context;
 using TransactionService.Domain.Interfaces;
 using TransactionService.Domain.Models;
 
@@ -13,10 +14,12 @@ namespace TransactionService.Data.Repositories
     public class TransactionRepository : ITransactionRepository
     {
         private readonly TransactionDbContext? _dbContext;
+        private readonly ILogger<TransactionRepository> _logger;
 
-        public TransactionRepository(TransactionDbContext dbContext)
+        public TransactionRepository(TransactionDbContext dbContext, ILogger<TransactionRepository> logger)
         {
             _dbContext = dbContext;
+            _logger = logger;
         }
 
         public async Task AddTransactionAsync(Transaction transaction)
@@ -25,18 +28,20 @@ namespace TransactionService.Data.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task DeleteTransactionAsync(int id)
+        public async Task DeleteTransactionAsync(Guid transactionId)
         {
-            var transaction = await _dbContext.Transactions.FindAsync(id);
+            var transaction = await _dbContext.Transactions.FindAsync(transactionId);
 
             if (transaction != null)
             {
                 _dbContext.Transactions.Remove(transaction);
                 await _dbContext.SaveChangesAsync();
+                _logger.LogInformation($"Transaction {transactionId} deleted successfully.");
             }
             else
             {
-                throw new NullReferenceException($"Transaction '{id}' not found. Delete is impossible");
+                _logger.LogWarning($"User {transactionId} not found. Delete failed.");
+                throw new NullReferenceException($"Transaction {{{transactionId}}} not found. Delete failed");
             }
         }
 
@@ -45,9 +50,9 @@ namespace TransactionService.Data.Repositories
             return await _dbContext.Transactions.ToListAsync();
         }
 
-        public async Task<Transaction> GetTransactionByIdAsync(int id)
+        public async Task<Transaction> GetTransactionByIdAsync(Guid transactionId)
         {
-            return await _dbContext.Transactions.FindAsync(id);
+            return await _dbContext.Transactions.SingleOrDefaultAsync(t => t.Id == transactionId);
         }
 
         public Task UpdateTransactionAsync(Transaction transaction)

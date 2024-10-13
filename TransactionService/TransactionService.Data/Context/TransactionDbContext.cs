@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TransactionService.Domain.Models;
 
-namespace TransactionService.Data.Data
+namespace TransactionService.Data.Context
 {
     public class TransactionDbContext : DbContext
     {
