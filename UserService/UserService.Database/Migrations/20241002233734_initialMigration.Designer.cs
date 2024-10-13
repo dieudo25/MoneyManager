@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using UserService.Data.Context;
+using UserService.Database.Context;
 
 #nullable disable
 
-namespace UserService.Data.Migrations
+namespace UserService.Database.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20241005163920_updateDB")]
-    partial class updateDB
+    [Migration("20241002233734_initialMigration")]
+    partial class initialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

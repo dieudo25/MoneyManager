@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TransactionService.Data.Context;
+using TransactionService.Database.Context;
 
 #nullable disable
 
-namespace TransactionService.Data.Migrations
+namespace TransactionService.Database.Migrations
 {
     [DbContext(typeof(TransactionDbContext))]
     partial class TransactionDbContextModelSnapshot : ModelSnapshot

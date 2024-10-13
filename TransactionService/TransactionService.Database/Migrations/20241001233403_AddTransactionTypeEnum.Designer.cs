@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TransactionService.Data.Context;
+using TransactionService.Database.Context;
 
 #nullable disable
 
-namespace TransactionService.Data.Migrations
+namespace TransactionService.Database.Migrations
 {
     [DbContext(typeof(TransactionDbContext))]
     [Migration("20241001233403_AddTransactionTypeEnum")]

@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace TransactionService.Data.Migrations
+namespace TransactionService.Database.Migrations
 {
     /// <inheritdoc />
     public partial class AddTransactionTypeEnum : Migration

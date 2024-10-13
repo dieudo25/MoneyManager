@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TransactionService.Data.Repositories;
+using TransactionService.Database.Repositories;
 using TransactionService.Domain.Interfaces;
 using TransactionService.Domain.Models;
 

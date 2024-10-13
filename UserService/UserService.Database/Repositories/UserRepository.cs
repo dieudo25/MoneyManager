@@ -6,7 +6,7 @@ using UserService.Domain.Models;
 using UserService.Domain.Interfaces;
 using Microsoft.Extensions.Logging;
 
-namespace UserService.Data.Repositories
+namespace UserService.Database.Repositories
 {
     public class UserRepository : IUserRepository
     {

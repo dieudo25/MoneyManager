@@ -2,8 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Converters;
 using Serilog;
-using TransactionService.Data.Context;
-using TransactionService.Data.Repositories;
+using TransactionService.Database.Context;
+using TransactionService.Database.Repositories;
 using TransactionService.Domain.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);

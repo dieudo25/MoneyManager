@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TransactionService.Data.Context;
+using TransactionService.Database.Context;
 
 #nullable disable
 
-namespace TransactionService.Data.Migrations
+namespace TransactionService.Database.Migrations
 {
     [DbContext(typeof(TransactionDbContext))]
-    [Migration("20240928162412_initialMigration2")]
-    partial class initialMigration2
+    [Migration("20241005163605_UseGuidAsId")]
+    partial class UseGuidAsId
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,11 +27,9 @@ namespace TransactionService.Data.Migrations
 
             modelBuilder.Entity("TransactionService.Domain.Models.Transaction", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,4)");
@@ -41,6 +39,9 @@ namespace TransactionService.Data.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TransactionType")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

@@ -5,11 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TransactionService.Data.Context;
+using TransactionService.Database.Context;
 using TransactionService.Domain.Interfaces;
 using TransactionService.Domain.Models;
 
-namespace TransactionService.Data.Repositories
+namespace TransactionService.Database.Repositories
 {
     public class TransactionRepository : ITransactionRepository
     {

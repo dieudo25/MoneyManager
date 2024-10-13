@@ -3,8 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Converters;
 using Serilog;
-using UserService.Data.Context;
-using UserService.Data.Repositories;
+using UserService.Database.Context;
+using UserService.Database.Repositories;
 using UserService.Domain.Interfaces;
 using UserService.Domain.Models;
 

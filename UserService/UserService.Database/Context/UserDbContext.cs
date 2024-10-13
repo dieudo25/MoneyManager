@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UserService.Domain.Models;
 
-namespace UserService.Data.Context
+namespace UserService.Database.Context
 {
     public class UserDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
     {

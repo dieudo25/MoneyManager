@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace UserService.Data.Migrations
+namespace UserService.Database.Migrations
 {
     /// <inheritdoc />
     public partial class updateDB : Migration

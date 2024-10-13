@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="TransactionService.Data\**" />
-    <EmbeddedResource Remove="TransactionService.Data\**" />
-    <None Remove="TransactionService.Data\**" />
+    <Compile Remove="TransactionService.Database\**" />
+    <EmbeddedResource Remove="TransactionService.Database\**" />
+    <None Remove="TransactionService.Database\**" />
   </ItemGroup>
 
   <ItemGroup>
