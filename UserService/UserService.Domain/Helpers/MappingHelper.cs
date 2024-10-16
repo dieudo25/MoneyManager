@@ -9,7 +9,7 @@ namespace UserService.Domain.Helpers
         {
             if (user == null)
             {
-                throw new NullReferenceException("User object is null, mapping to DTO object failed.");
+                throw new ArgumentNullException($"{nameof(user)} is null, mapping to DTO object failed.");
             }
 
             return new UserDto
@@ -27,7 +27,7 @@ namespace UserService.Domain.Helpers
         {
             if (createUserDto == null)
             {
-                throw new ArgumentNullException(nameof(createUserDto));
+                throw new ArgumentNullException($"{nameof(createUserDto)} is null , mapping to model object failed.");
             }
 
             return new User

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Common.Domain.Dtos;
+using Microsoft.AspNetCore.Mvc;
 using TransactionService.Database.Repositories;
 using TransactionService.Domain.Interfaces;
 using TransactionService.Domain.Models;
@@ -40,6 +41,16 @@ namespace TransactionService.API.Controllers
                 return NotFound();
             }
             
+            return Ok(transaction);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<IEnumerable<TransactionDto>>> GetTransactionByAccountId(Guid Id)
+        {
+            var transactions = await _transactionRepository.GetTransactionByAccountIdAsync(Id);
+
+            var transactionDtos = transactions.Select(MappingHelper.To)
+
             return Ok(transaction);
         }
 
