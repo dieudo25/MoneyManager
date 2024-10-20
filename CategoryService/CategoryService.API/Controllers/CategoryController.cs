@@ -30,14 +30,19 @@ namespace CategoryService.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Category>> GetCategoryById(Guid Id)
+        public async Task<ActionResult<Category>> GetCategoryById(Guid id)
         {
-            var category = await _categoryRepository.GetCategoryByIdAsync(Id);
+            _logger.LogInformation($"Fetch category: {id}");
+
+            var category = await _categoryRepository.GetCategoryByIdAsync(id);
 
             if (category == null)
             {
+                _logger.LogError($"Category '{id}' not found");
                 return NotFound();
             }
+
+            _logger.LogInformation($"Category '{id}' fetched successfully");
 
             return Ok(category);
         }
@@ -49,6 +54,8 @@ namespace CategoryService.API.Controllers
 
             await _categoryRepository.AddCategoryAsync(category);
 
+            _logger.LogInformation("Category added successfully");
+
             return Ok();
         }
 
@@ -59,9 +66,11 @@ namespace CategoryService.API.Controllers
 
             if (category == null)
             {
-                _logger.LogError($"Category to update is null");
+                _logger.LogError($"Category to update is not found");
                 return BadRequest();
             }
+
+            _logger.LogInformation("Category updated successfully");
 
             await _categoryRepository.UpdateCategoryAsync(category);
 
@@ -69,11 +78,13 @@ namespace CategoryService.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteCategory(Guid categoryId)
+        public async Task<ActionResult> DeleteCategory(Guid id)
         {
-            _logger.LogDebug($"Delete category {categoryId}");
+            _logger.LogDebug($"Delete category {id}");
 
-            await _categoryRepository.DeleteCategoryAsync(categoryId);
+            await _categoryRepository.DeleteCategoryAsync(id);
+
+            _logger.LogInformation($"Category '{id}' deleted successfully");
 
             return NoContent();
         }

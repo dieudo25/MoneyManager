@@ -22,11 +22,9 @@ namespace TransactionService.Domain.Models
         [Column(TypeName = "decimal(18,4)")]
         public decimal Amount { get; set; }
 
-        public DateTime Date { get; set; }
+        public DateTime CreationDate { get; set; }
 
         public TransactionTypeEnum TransactionType { get; set; }
-
-        public AccountDto Account { get; set; }
 
         public override string ToString()
         {

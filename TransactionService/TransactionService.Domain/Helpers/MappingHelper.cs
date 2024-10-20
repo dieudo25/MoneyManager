@@ -20,10 +20,9 @@ namespace TransactionService.Domain.Helpers
                 Id = transaction.Id,
                 AccountId = transaction.AccountId,
                 Amount = transaction.Amount,
-                Date = transaction.Date,
+                CreationDate = transaction.CreationDate,
                 Description = transaction.Description,
                 TransactionType = transaction.TransactionType,
-                Account = transaction.Account,
             };
         }
 
@@ -37,10 +36,9 @@ namespace TransactionService.Domain.Helpers
                 Id = transactionDto.Id,
                 AccountId = transactionDto.AccountId,
                 Amount = transactionDto.Amount,
-                Date = transactionDto.Date,
+                CreationDate = transactionDto.CreationDate,
                 Description = transactionDto.Description,
                 TransactionType = transactionDto.TransactionType,
-                Account = transactionDto.Account,
             };
         }
     }

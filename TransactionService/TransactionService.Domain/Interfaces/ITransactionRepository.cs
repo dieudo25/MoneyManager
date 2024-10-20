@@ -12,7 +12,7 @@ namespace TransactionService.Domain.Interfaces
     {
         Task<IEnumerable<Transaction>> GetAllTransactionsAsync();
         Task<Transaction> GetTransactionByIdAsync(Guid transactionId);
-        Task<IEnumerable<TransactionDto>> GetTransactionByAccountIdAsync(Guid id);
+        Task<IEnumerable<Transaction>> GetTransactionByAccountIdAsync(Guid id);
         Task AddTransactionAsync(Transaction transaction);
         Task DeleteTransactionAsync(Guid transactionId);
         Task UpdateTransactionAsync(Transaction transaction);
