@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountService.API", "Accou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountService.Client", "AccountService\AccountService.Client\AccountService.Client\AccountService.Client.csproj", "{FCDE2B53-21C1-4AD7-B281-C5DB393B4239}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BudgetService", "BudgetService", "{6545EDFD-AAD6-4BF6-9240-A29D186765F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

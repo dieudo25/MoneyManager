@@ -11,7 +11,7 @@ namespace TransactionService.API.Controllers
     [ApiController]
     public class TransactionController : Controller
     {
-        public readonly ITransactionRepository _transactionRepository;
+        private readonly ITransactionRepository _transactionRepository;
         private readonly ILogger<TransactionController> _logger;
 
         public TransactionController(ITransactionRepository transactionRepository, ILogger<TransactionController> logger)

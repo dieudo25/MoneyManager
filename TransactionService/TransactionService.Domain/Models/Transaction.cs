@@ -19,7 +19,7 @@ namespace TransactionService.Domain.Models
 
         public string? Description { get; set; }
 
-        [Column(TypeName = "decimal(18,4)")]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Amount { get; set; }
 
         public DateTime CreationDate { get; set; }

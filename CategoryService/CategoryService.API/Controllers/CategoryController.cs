@@ -8,7 +8,7 @@ namespace CategoryService.API.Controllers
     [ApiController]
     public class CategoryController : Controller
     {
-        public readonly ICategoryRepository _categoryRepository;
+        private readonly ICategoryRepository _categoryRepository;
         private readonly ILogger<CategoryController> _logger;
 
         public CategoryController(ICategoryRepository categoryRepository, ILogger<CategoryController> logger)
