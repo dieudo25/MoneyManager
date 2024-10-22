@@ -33,15 +33,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CategoryService.API", "Cate
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AccountService", "AccountService", "{707EE064-9536-4527-B775-3AFA07B3DDF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountService.Domain", "AccountService\AccountService.Domain\AccountService.Domain.csproj", "{84FE00A0-AC0E-4FA8-BB38-420C6AF101DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountService.Domain", "AccountService\AccountService.Domain\AccountService.Domain.csproj", "{84FE00A0-AC0E-4FA8-BB38-420C6AF101DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountService.Database", "AccountService\AccountService.Database\AccountService.Database.csproj", "{9DFD66F7-3C9B-404B-8E6D-2D711F230D39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountService.Database", "AccountService\AccountService.Database\AccountService.Database.csproj", "{9DFD66F7-3C9B-404B-8E6D-2D711F230D39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountService.API", "AccountService\AccountService.API\AccountService.API.csproj", "{AD444F81-A0E4-4184-AC11-9AD68BC48F94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountService.API", "AccountService\AccountService.API\AccountService.API.csproj", "{AD444F81-A0E4-4184-AC11-9AD68BC48F94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountService.Client", "AccountService\AccountService.Client\AccountService.Client\AccountService.Client.csproj", "{FCDE2B53-21C1-4AD7-B281-C5DB393B4239}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountService.Client", "AccountService\AccountService.Client\AccountService.Client\AccountService.Client.csproj", "{FCDE2B53-21C1-4AD7-B281-C5DB393B4239}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BudgetService", "BudgetService", "{6545EDFD-AAD6-4BF6-9240-A29D186765F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetService.Domain", "BudgetService\BudgetService.Domain\BudgetService.Domain.csproj", "{4FEEDC48-8B1D-4CC5-9A34-10BD65CB1C44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetService.Database", "BudgetService\BudgetService.Database\BudgetService.Database.csproj", "{2038F88C-AFD9-4FCC-8A07-BB268E9ADA58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetService.API", "BudgetService\BudgetService.API\BudgetService.API.csproj", "{37439F94-995C-496A-981D-5E65E6283337}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +111,18 @@ Global
 		{FCDE2B53-21C1-4AD7-B281-C5DB393B4239}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCDE2B53-21C1-4AD7-B281-C5DB393B4239}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCDE2B53-21C1-4AD7-B281-C5DB393B4239}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FEEDC48-8B1D-4CC5-9A34-10BD65CB1C44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FEEDC48-8B1D-4CC5-9A34-10BD65CB1C44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FEEDC48-8B1D-4CC5-9A34-10BD65CB1C44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FEEDC48-8B1D-4CC5-9A34-10BD65CB1C44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2038F88C-AFD9-4FCC-8A07-BB268E9ADA58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2038F88C-AFD9-4FCC-8A07-BB268E9ADA58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2038F88C-AFD9-4FCC-8A07-BB268E9ADA58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2038F88C-AFD9-4FCC-8A07-BB268E9ADA58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37439F94-995C-496A-981D-5E65E6283337}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37439F94-995C-496A-981D-5E65E6283337}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37439F94-995C-496A-981D-5E65E6283337}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37439F94-995C-496A-981D-5E65E6283337}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -124,6 +142,9 @@ Global
 		{9DFD66F7-3C9B-404B-8E6D-2D711F230D39} = {707EE064-9536-4527-B775-3AFA07B3DDF4}
 		{AD444F81-A0E4-4184-AC11-9AD68BC48F94} = {707EE064-9536-4527-B775-3AFA07B3DDF4}
 		{FCDE2B53-21C1-4AD7-B281-C5DB393B4239} = {707EE064-9536-4527-B775-3AFA07B3DDF4}
+		{4FEEDC48-8B1D-4CC5-9A34-10BD65CB1C44} = {6545EDFD-AAD6-4BF6-9240-A29D186765F6}
+		{2038F88C-AFD9-4FCC-8A07-BB268E9ADA58} = {6545EDFD-AAD6-4BF6-9240-A29D186765F6}
+		{37439F94-995C-496A-981D-5E65E6283337} = {6545EDFD-AAD6-4BF6-9240-A29D186765F6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1B7295D3-DFE2-40E8-B559-42DDECD40711}

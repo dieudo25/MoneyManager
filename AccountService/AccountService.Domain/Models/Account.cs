@@ -1,5 +1,6 @@
 ﻿using Common.Domain.Dtos;
 using Common.Domain.Enums;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,6 +13,7 @@ namespace AccountService.Domain.Models
     public class Account
     {
         public Guid Id { get; set; }
+        public Guid UserId { get; set; }
 
         [Column(TypeName = "decimal(18, 2)")]
         public decimal Balance { get; set; }
@@ -19,5 +21,10 @@ namespace AccountService.Domain.Models
         public AccountTypeEnum AccountType { get; set; }
 
         public List<TransactionDto> Transactions { get; set; } = new List<TransactionDto>();
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
+        }
     }
 }

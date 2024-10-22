@@ -62,7 +62,6 @@ namespace CategoryService.Database.Repositories
             {
                 existingCategory.Name = category.Name;
                 existingCategory.Description = category.Description;
-                existingCategory.TransactionType = category.TransactionType;
             }
 
             return Task.CompletedTask;
