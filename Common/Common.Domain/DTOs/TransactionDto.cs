@@ -1,17 +1,15 @@
-﻿using Common.Domain.Dtos;
-using Common.Domain.Enums;
+﻿using Common.Domain.Enums;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TransactionService.Domain.Models
+namespace Common.Domain.Dtos
 {
-    public class Transaction
+    public class TransactionDto
     {
         public Guid Id { get; set; }
 
@@ -19,7 +17,7 @@ namespace TransactionService.Domain.Models
 
         public string? Description { get; set; }
 
-        [Column(TypeName = "decimal(18,2)")]
+        [Column(TypeName = "decimal(18,4)")]
         public decimal Amount { get; set; }
 
         public DateTime CreationDate { get; set; }

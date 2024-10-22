@@ -36,7 +36,6 @@ namespace CategoryService.Database.Repositories
             {
                 _dbContext.Categories.Remove(category);
                 await _dbContext.SaveChangesAsync();
-                _logger.LogInformation($"Category {categoryId} deleted successfully.");
             }
             else
             {

@@ -50,6 +50,11 @@ namespace TransactionService.Database.Repositories
             return await _dbContext.Transactions.ToListAsync();
         }
 
+        public async Task<IEnumerable<Transaction>> GetTransactionByAccountIdAsync(Guid id)
+        {
+            return await _dbContext.Transactions.Where(t => t.AccountId == id).ToListAsync();
+        }
+
         public async Task<Transaction> GetTransactionByIdAsync(Guid transactionId)
         {
             return await _dbContext.Transactions.SingleOrDefaultAsync(t => t.Id == transactionId);
@@ -63,7 +68,7 @@ namespace TransactionService.Database.Repositories
             {
                 existingTransaction.Description = transaction.Description;
                 existingTransaction.Amount = transaction.Amount;
-                existingTransaction.Date = transaction.Date;
+                existingTransaction.CreationDate = transaction.CreationDate;
             }
 
             return Task.CompletedTask;

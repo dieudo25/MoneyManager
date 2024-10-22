@@ -38,17 +38,20 @@ namespace UserService.API.Controllers
             return Ok(users);
         }
 
-        [HttpGet("{userId}")]
-        public async Task<ActionResult<User>> GetUserById(Guid userId)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<User>> GetUserById(Guid id)
         {
-            _logger.LogDebug($"Fetch user {{{userId}}}");
+            _logger.LogDebug($"Fetch user: {id}");
 
-            var user = await _userRepository.GetUserByIdAsync(userId);
+            var user = await _userRepository.GetUserByIdAsync(id);
 
             if (user == null)
             {
+                _logger.LogError($"User '{id}' not found");
                 return NotFound();
             }
+
+            _logger.LogInformation($"User '{id}' fetched successfully");
 
             return Ok(user);
         }
@@ -56,12 +59,13 @@ namespace UserService.API.Controllers
         [HttpGet("email/{email}")]
         public async Task<ActionResult<User>> GetUserByEmail(string email)
         {
-            _logger.LogDebug($"Fetch user by email");
+            _logger.LogDebug($"Fetch user '{email}'");
 
             var user = await _userRepository.GetUserByEmailAsync(email);
 
             if (user == null)
             {
+                _logger.LogError($"User '{email}' not found");
                 return NotFound();
             }
 
@@ -71,7 +75,7 @@ namespace UserService.API.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> CreateUser([FromBody] UserDto createUserDto)
         {
-            _logger.LogDebug("Request to create user");
+            _logger.LogDebug($"Request to create user: {@createUserDto}", createUserDto);
 
             if (createUserDto == null || string.IsNullOrWhiteSpace(createUserDto.Password))
             {
@@ -88,32 +92,36 @@ namespace UserService.API.Controllers
                 return CreatedAtAction(nameof(GetUserById), new { userId = user.Id }, user);
             }
             
-            _logger.LogError("Failed to create user: {Errors}", result.Errors);
+            _logger.LogError($"Failed to create user: {result.Errors}");
             return BadRequest(result.Errors);
         }
 
-        [HttpPut("{userId}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser([FromBody] User user)
         {
             _logger.LogDebug("Update user: {@User}", user);
 
             if (user == null)
             {
-                _logger.LogError($"User to update is null");
-                return BadRequest("User object is null or ID mismatch.");
+                _logger.LogError($"User to update is not found");
+                return BadRequest("User to update is not found");
             }
 
             await _userRepository.UpdateUserAsync(user);
 
-            return NoContent();
+            _logger.LogInformation("User updated successfully");
+
+            return Ok(user);
         }
 
-        [HttpDelete("{userId}")]
-        public async Task<IActionResult> DeleteUser(Guid userId)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(Guid id)
         {
-            _logger.LogDebug($"Delete user {userId}");
+            _logger.LogDebug($"Delete user {id}");
 
-            await _userRepository.DeleteUserAsync(userId);
+            await _userRepository.DeleteUserAsync(id);
+
+            _logger.LogInformation($"User '{id}' deleted successfully");
 
             return NoContent();
         }

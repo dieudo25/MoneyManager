@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -21,8 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CategoryService.Database\CategoryService.Database.csproj" />
-    <ProjectReference Include="..\CategoryService.Domain\CategoryService.Domain.csproj" />
+    <ProjectReference Include="..\AccountService.Client\AccountService.Client\AccountService.Client.csproj" />
+    <ProjectReference Include="..\AccountService.Database\AccountService.Database.csproj" />
+    <ProjectReference Include="..\AccountService.Domain\AccountService.Domain.csproj" />
   </ItemGroup>
 
 </Project>
